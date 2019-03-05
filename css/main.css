@@ -45,7 +45,7 @@ ul.posts {
 ul.posts li {
     list-style: none;
 }
-project-description{
+p.project-description{
 	font-size: 0.5em;
     line-height: 1.4em;
     color#333
