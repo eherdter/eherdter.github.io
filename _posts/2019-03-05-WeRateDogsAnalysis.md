@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "An analysis of the WeRateDogs Twitter Account"
+title: "An analysis of the WeRateDogs Twitter account"
 date: 2019-03-05
 ---
 
@@ -12,7 +12,7 @@ This was a fun project for me because
 1. I'm in the 99th percentile of general dog enthusiasm. I LOVE dogs, and
 2. I learned how to make a twitter api to extra the JSON data associated with each tweet (based on the tweet id).
 
-You can see the Jupyter Notebook that steps through data procurement, wrangling, and visualization. You won't be able to actually get the twitter data yourself because that relies on a python function that I've kept to myself because it contains API access tokens etc.
+You can see the Jupyter Notebook that steps through data procurement, wrangling, and visualization [here](https://github.com/eherdter/FunData/tree/master/WeRateDogs_TwitterAnalysis). Unfortunately, you won't be able to actually get the twitter data yourself because that relies on a python function that I've kept to myself because it contains API access tokens etc.
 
 Here's a description of the general wrangling steps.
 
@@ -82,7 +82,7 @@ Also, chihuahas and pugs. So cute, so weird looking. So much to say about them!
 Here's the ranking in terms of tweets about them...
 
 | Breed| Number of Times They Appeared in a Tweet |
-| --- | --- |
+| :---: | :---: |
 | Golden retriever |137|
 | Labrador retrivers | 94|
 |Pembroke corgis | 88|
@@ -93,13 +93,14 @@ Here's the ranking in terms of tweets about them...
 Also, people have some very creative names for dogs... Take for example, **[Shnuggles](https://t.co/GwvpQiQ7oQ)**
 ![alt text](https://pbs.twimg.com/media/CVlkid8WoAAqDlB.jpg)
 
-or **[Cilantro](https://twitter.com/dog_rates/status/727685679342333952/photo/1)**.....
+or **[Cilantro]
+(https://twitter.com/dog_rates/status/727685679342333952/photo/1)**
 ![Image](https://pbs.twimg.com/media/ChlCQg-VIAQ_8g4.jpg)
 
 Some posts are not accompanied with a name but using those with a name I was able to determine the top ten most popular names for dogs. Here they are...
 
 | Name| Number of Times They Appeared in a Tweet |
-| --- | --- |
+| :---: | :---: |
 | Cooper |10|
 | Oliver |10|
 |Charlie |10|
