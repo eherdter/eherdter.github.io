@@ -4,7 +4,7 @@ title: "An analysis of the WeRateDogs Twitter Account"
 date: 2019-03-05
 ---
 
-For my latest project with the Udacity Data Analyst Nanodegree we were tasked to use our Python wrangling skills to gather and analyze data associated with the WeRateDogs Twitter [page](https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor).
+For my latest project with the Udacity Data Analyst Nanodegree we were tasked to use our Python wrangling skills to gather and analyze data associated with the [WeRateDogs Twitter page](https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor).
 
 This was a fun project for me because 1. I'm in the 99th percentile of general dog enthusiasm. I LOVE dogs, and 2. I learned how to make a twitter api to extra the JSON data associated with each tweet (based on the tweet id).
 
@@ -34,21 +34,25 @@ Tidiness issues:
 
 Quality Issues
 
-To remove the retweets I selected only the rows where the retweet id status was null as such: df1 = df1[df1.retweeted_status_id.isnull()]. Then to remove the replies I selected only the rows where the reply to user id was null as such: [df1.in_reply_to_user_id.isnull()]. To inspect issues with the naming I first used the df1.name.value_counts(). I found 55 items when name was 'a' which I thought was a mistake. I inspected these rows as such: df1[df1['name'] == 'a']. I found that these rows had the format of 'This is a floofer named [NAME]' as opposed to 'This is [NAME]'. I selected these rows and looped through each as such:
+To remove the retweets I selected only the rows where the retweet id status was null as such:
+`df1 = df1[df1.retweeted_status_id.isnull()]. `
+Then to remove the replies I selected only the rows where the reply to user id was null as such: `[df1.in_reply_to_user_id.isnull()].`
+To inspect issues with the naming I first used the `df1.name.value_counts()`. I found 55 items when name was 'a' which I thought was a mistake. I inspected these rows as such: `df1[df1['name'] == 'a']`.
+I found that these rows had the format of 'This is a floofer named [NAME]' as opposed to 'This is [NAME]'. I selected these rows and looped through each as such:
 
-new_names = []
-for index, row in a_new.iterrows():
+  new_names = []
+  for index, row in a_new.iterrows():
 
-    string = str(row['text'])
-    befor_keyowrd, keyword, after_keyword = string.partition('named')
-    name = after_keyword.split('.')[0]
-    new_names.append({'index': index, 'name': name})
+      string = str(row['text'])
+      befor_keyowrd, keyword, after_keyword = string.partition('named')
+      name = after_keyword.split('.')[0]
+      new_names.append({'index': index, 'name': name})
 
 
-new_names = pd.DataFrame(new_names)
-new_names = new_names.set_index('index')
+  new_names = pd.DataFrame(new_names)
+  new_names = new_names.set_index('index')
 
-I created a new dataframe and used .update() to update the new names in the master df. I manually replaced the names where the names were first assigned 'an' and 'the' and also manually replaced some names at mentioned index locations. Next, I split the tweet text and http url into two separate columns using df1.text.str.split('https', expand=True)[1]. I then added this to an 'https' string to make a url column. To get a column with just text I did nearly the same thing but selected the first item as such [0]. Finally, I changed the time variables which were set to objects to datetimes using pd.to_datetime().
+I created a new dataframe and used `.update()` to update the new names in the master df. I manually replaced the names where the names were first assigned 'an' and 'the' and also manually replaced some names at mentioned index locations. Next, I split the tweet text and http url into two separate columns using `df1.text.str.split('https', expand=True)[1]`. I then added this to an 'https' string to make a url column. To get a column with just text I did nearly the same thing but selected the first item as such [0]. Finally, I changed the time variables which were set to objects to datetimes using `pd.to_datetime().`
 
 Tidiness Issues
 
@@ -59,4 +63,4 @@ Next, I collapsed the stage columns and essentially reversed a one-hot encoding-
 Finally, I collapsed the rating numerator and rating denominator into a single column by first converting them to strings and then just pasting them together, separated by a '/' to making a rating column.
 
 Final Cleaning for Quality
-Once I completed the three tidying steps I removed several unnecessary columns. These were:  'doggo', 'floofer', 'pupper','puppo', 'nostage', 'multi_stage', 'rating_numerator', 'rating_denominator', 'in_reply_to_status_id', 'in_reply_to_user_id','retweeted_status_id','retweeted_status_user_id', 'retweeted_status_timestamp'
+Once I completed the three tidying steps I removed several unnecessary columns. These were:  '`doggo', 'floofer', 'pupper','puppo', 'nostage', 'multi_stage', 'rating_numerator', 'rating_denominator', 'in_reply_to_status_id', 'in_reply_to_user_id','retweeted_status_id','retweeted_status_user_id', 'retweeted_status_timestamp'`
