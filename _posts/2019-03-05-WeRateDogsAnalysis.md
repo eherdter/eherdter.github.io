@@ -93,8 +93,7 @@ Here's the ranking in terms of tweets about them...
 Also, people have some very creative names for dogs... Take for example, **[Shnuggles](https://t.co/GwvpQiQ7oQ)**
 ![alt text](https://pbs.twimg.com/media/CVlkid8WoAAqDlB.jpg)
 
-or **[Cilantro]
-(https://twitter.com/dog_rates/status/727685679342333952/photo/1)**
+or **[Cilantro](https://twitter.com/dog_rates/status/727685679342333952/photo/1)**
 ![Image](https://pbs.twimg.com/media/ChlCQg-VIAQ_8g4.jpg)
 
 Some posts are not accompanied with a name but using those with a name I was able to determine the top ten most popular names for dogs. Here they are...
