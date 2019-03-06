@@ -8,6 +8,7 @@ For my latest project with the Udacity Data Analyst Nanodegree we were tasked to
 ![image](https://pbs.twimg.com/media/D0gmjyHUYAAf1wV.jpg:large)
 
 This was a fun project for me because
+
 1. I'm in the 99th percentile of general dog enthusiasm. I LOVE dogs, and
 2. I learned how to make a twitter api to extra the JSON data associated with each tweet (based on the tweet id).
 
@@ -15,10 +16,10 @@ You can see the Jupyter Notebook that steps through data procurement, wrangling,
 
 Here's a description of the general wrangling steps.
 
-##Wrangling Methods
+## Wrangling Methods
 I used general assessment techniques to identify quality and tidiness issues. These were `.head()` , `.value_counts()`, `.sample()` etc. I identified eight issues quality issues and two tidiness issues within this master dataset. These were:
 
-###Dirty data issues:
+### Dirty data issues:
 
 1. Some retweets present (RT @ ...)
 2. Some replies to other users present
@@ -29,13 +30,13 @@ I used general assessment techniques to identify quality and tidiness issues. Th
 7. timestamp and retweeted_status_timestamp datatypes are strs (object)
 8. Many unnecessary columns
 
-###Tidiness issues:
+### Tidiness issues:
 
 1. Datasets in separate dataframes
 2. Dogger, floofer, pupper, and puppo seperate columns when should be in one column (stage).
 3. Rating is in separate columns (numerator and denominator)
 
-##Quality Issues
+## Quality Issues
 
 To remove the retweets I selected only the rows where the retweet id status was null as such:
 `df1 = df1[df1.retweeted_status_id.isnull()]. `  
@@ -57,7 +58,7 @@ I found that these rows had the format of 'This is a floofer named [NAME]' as op
 
 I created a new dataframe and used `.update()` to update the new names in the master df. I manually replaced the names where the names were first assigned 'an' and 'the' and also manually replaced some names at mentioned index locations. Next, I split the tweet text and http url into two separate columns using `df1.text.str.split('https', expand=True)[1]`. I then added this to an 'https' string to make a url column. To get a column with just text I did nearly the same thing but selected the first item as such [0]. Finally, I changed the time variables which were set to objects to datetimes using `pd.to_datetime().`
 
-##Tidiness Issues
+## Tidiness Issues
 
 Before I did any cleaning for quality I joined the three dataframes together using the common column of tweet_id.
 
@@ -65,10 +66,10 @@ Next, I collapsed the stage columns and essentially reversed a one-hot encoding-
 
 Finally, I collapsed the rating numerator and rating denominator into a single column by first converting them to strings and then just pasting them together, separated by a '/' to making a rating column.
 
-##Final Cleaning for Quality
+## Final Cleaning for Quality
 Once I completed the three tidying steps I removed several unnecessary columns. These were:  '`doggo', 'floofer', 'pupper','puppo', 'nostage', 'multi_stage', 'rating_numerator', 'rating_denominator', 'in_reply_to_status_id', 'in_reply_to_user_id','retweeted_status_id','retweeted_status_user_id', 'retweeted_status_timestamp'`
 
-##Results
+## Results
 
 First off, this a very funny twitter account. If you've never read any of the tweets I highly recommend you do.
 
